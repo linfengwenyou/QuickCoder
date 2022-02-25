@@ -8,7 +8,7 @@
 1. 将`main`文件拖动出来，然后改名为`QuickCoder`
 2. 打开文件注释第一行,标记为使用脚本方式
 
-`\#!/usr/bin/env xcrun swift`
+`#!/usr/bin/env xcrun swift`
 
 3. 修改文件尾可执行命令
 
