@@ -15,9 +15,10 @@ if count < 3 {
     print("""
     入参规则：
     command type name
-    type:   b/B 按钮
-            l/L 标签
-            i/I 图片
+    type:   b/B 按钮 UIButton
+            l/L 标签 UILabel
+            i/I 图片 UIImageView
+            v/V 视图 UIView
     
     name:   标签名称
     """)
@@ -28,17 +29,19 @@ let t = CommandLine.arguments[1]        // 第一个参数，代表类型
 let name = CommandLine.arguments[2]     // 第二个参数，代表名称
 
 switch t.lowercased() {
-    case "b":
+case "b":
     print(buttonString(name))
 case "l":
     print(labelString(name))
 case "i":
     print(imageString(name))
+case "v":
+    print(viewString(name))
     
 default: break
     
 }
-    
+
 
 
 /*打印Button的样式*/
@@ -122,6 +125,23 @@ func imageString(_ name:String) -> String {
 """
 }
 
+
+
+func viewString(_ name:String) -> String {
+    return """
+/*<#视图#>*/
+@property (nonatomic, strong) UIView *\(name);
+
+- (UIView *)\(name) {
+    if (!_\(name)) {
+        _\(name) = [[UIView alloc] init];
+        _\(name).backgroundColor = UIColor.redColor;
+    }
+    return _\(name);
+}
+
+"""
+}
 
 
 
